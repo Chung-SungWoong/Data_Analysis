@@ -23,4 +23,12 @@ sample2_code = pd.merge(left = sample1, right = code_master, how = 'inner', left
 print(sample2_code)
 # how = 'inner'는 두 테이블의 기준 칼럼의 값이 서로 일치하는 경우에 사용하는 펑션
 
+sample = sample1_code.append(sample2_code, ignore_index = True)
+print(sample)
 
+sample1_code.append(sample2_code)
+
+sample.to_excel('/Users/chung_sungwoong/Desktop/Practice/Data_Analysis/files/sample.xlsx')
+
+
+sample_pivot = sample.pivot_table(values = '입국객수', index = '국적명', columns = '기준년월', aggfunc = 'mean')
